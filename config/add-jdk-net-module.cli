@@ -1,0 +1,3 @@
+embed-server
+/subsystem=ee/:write-attribute(name=global-modules,value=[{"name" => "jdk.net","slot" => "main"}])
+quit
