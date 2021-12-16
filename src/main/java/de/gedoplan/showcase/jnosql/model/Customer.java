@@ -19,5 +19,9 @@ public class Customer {
     
     @Column
     private Address address;
+
+    public Long getId() {
+        return id;
+    }
     
 }

@@ -28,11 +28,11 @@ public class CustomerService {
         return customerRepository.findById(id);
     }
     
-    public Customer savePerson(Customer customer) {
+    public Customer save(Customer customer) {
         return customerRepository.save(customer);
     }
     
-    public void deletePerson(Long id) {
+    public void delete(Long id) {
         customerRepository.deleteById(id);
     }
 
