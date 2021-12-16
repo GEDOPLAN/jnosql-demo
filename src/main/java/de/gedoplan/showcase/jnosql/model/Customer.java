@@ -11,17 +11,60 @@ import jakarta.nosql.mapping.Id;
 @Entity
 public class Customer {
     
-    @Id("id")
-    private Long id;
-    
+    @Id
+    private long id;
     @Column
     private String name;
-    
     @Column
-    private Address address;
+    private String street;
+    @Column
+    private String postcode;
+    @Column
+    private String city;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
-    
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" + "id=" + id + ", name=" + name + ", street=" + street + ", postcode=" + postcode + ", city=" + city + '}';
+    }
+
 }

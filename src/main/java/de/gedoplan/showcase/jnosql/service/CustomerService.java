@@ -28,8 +28,12 @@ public class CustomerService {
         return customerRepository.findById(id);
     }
     
-    public Customer save(Customer customer) {
-        return customerRepository.save(customer);
+    public Optional<Customer> save(Customer customer) {
+        try {
+            return Optional.of(customerRepository.save(customer));
+        } catch (NullPointerException ex) {
+            return Optional.empty();
+        }
     }
     
     public void delete(Long id) {
