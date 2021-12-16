@@ -44,7 +44,6 @@ public class CustomerEndpoint {
     @POST
     public Response createCustomer(Customer customer, @Context UriInfo uriInfo) {
         var createdCustomer = customerService.save(customer).orElseThrow(WebApplicationException::new);
-        System.out.println("Customer: " + createdCustomer);
         return Response.created(uriInfo
                 .getAbsolutePathBuilder()
                 .path(String.valueOf(createdCustomer.getId())).build())
