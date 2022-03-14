@@ -27,5 +27,11 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
       ME_CONFIG_MONGODB_URL: mongodb://root:example@mongodb:27017/
       
+  redis:
+    image: redis
+    restart: always
+    ports:
+        - 6379:6379
+      
 volumes:
   mongodb-data:
