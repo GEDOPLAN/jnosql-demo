@@ -1,7 +1,9 @@
 version: '3.1'
 services:
   app-server:
-    image: gedoplan-showcase/jnosql-demo:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: always
     ports:
         - 8080:8080
