@@ -12,6 +12,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -31,7 +32,10 @@ public class CustomerEndpoint {
     CustomerService customerService;
 
     @GET
-    public List<Customer> findAllCustomer() {
+    public List<Customer> findCustomer(@QueryParam("name") String name) {
+        if (name != null) {
+            return customerService.findByName(name);
+        }
         return customerService.findAll();
     }
 
@@ -40,7 +44,7 @@ public class CustomerEndpoint {
     public Customer findCustomer(@PathParam("id") Long id) {
         return customerService.findById(id).orElseThrow(NotFoundException::new);
     }
-
+    
     @POST
     public Response createCustomer(Customer customer, @Context UriInfo uriInfo) {
         var createdCustomer = customerService.save(customer).orElseThrow(WebApplicationException::new);
