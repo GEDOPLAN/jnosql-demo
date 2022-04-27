@@ -1,8 +1,10 @@
-package de.gedoplan.showcase.jnosql.repository;
+package de.gedoplan.showcase.jnosql;
 
 import jakarta.nosql.Settings;
 import jakarta.nosql.document.DocumentCollectionManager;
 import jakarta.nosql.document.DocumentCollectionManagerFactory;
+import jakarta.nosql.mapping.Database;
+import jakarta.nosql.mapping.DatabaseType;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,7 +21,9 @@ import org.eclipse.jnosql.communication.mongodb.document.MongoDBDocumentConfigur
 @ApplicationScoped
 public class DocumentCollectionManagerProducer implements Serializable {
 
-    private static final String COLLECTION = "customer";
+    public static final String CUSTOMER_COLLECTION = "customer";
+    public static final String ORDER_COLLECTION = "order";
+    
     private MongoDBDocumentConfiguration configuration;
     private DocumentCollectionManagerFactory managerFactory;
     
@@ -35,8 +39,15 @@ public class DocumentCollectionManagerProducer implements Serializable {
     }
     
     @Produces
-    public DocumentCollectionManager getManager() {
-        return managerFactory.get(COLLECTION);
+    @Database(value = DatabaseType.DOCUMENT, provider = DocumentCollectionManagerProducer.CUSTOMER_COLLECTION)
+    public DocumentCollectionManager getCustomerManager() {
+        return managerFactory.get(CUSTOMER_COLLECTION);
+    }
+    
+    @Produces
+    @Database(value = DatabaseType.DOCUMENT, provider = DocumentCollectionManagerProducer.ORDER_COLLECTION)
+    public DocumentCollectionManager getOrderManager() {
+        return managerFactory.get(ORDER_COLLECTION);
     }
     
 }
