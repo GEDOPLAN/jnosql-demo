@@ -26,14 +26,42 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.20</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging</artifactId>
+            <version>3.4.1.Final</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>org.eclipse.jnosql.mapping</groupId>
             <artifactId>mapping-document</artifactId>
+            <version>${jnosql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jnosql.mapping</groupId>
+            <artifactId>mapping-key-value</artifactId>
             <version>${jnosql.version}</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jnosql.communication</groupId>
             <artifactId>mongodb-driver</artifactId>
             <version>${jnosql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jnosql.communication</groupId>
+            <artifactId>redis-driver</artifactId>
+            <version>${jnosql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.microprofile.config</groupId>
+            <artifactId>microprofile-config-api</artifactId>
+            <version>3.0.1</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
     
